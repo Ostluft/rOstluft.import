@@ -1,0 +1,38 @@
+Package: rOstluft.import
+Type: Package
+Title: Importing data into a rOstluft store
+Version: 0.1.0
+Authors@R: c(
+  person("Thomas", "von Allmen", email = "thomas.vonallmen@zuerich.ch", role = c("aut", "cre")),
+  person("Ostluft", role = c("cph")))
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: Importing data exports from an ftp/http
+    server or a local directory into a rOstluft store.
+Depends: R (>= 4.0.0)
+Imports:
+    curl,
+    dplyr,
+    fs,
+    glue,
+    lgr,
+    lubridate,
+    purrr,
+    rlang (>= 0.4.11),
+    rOstluft,
+    stringr,
+    tibble,
+    yaml
+Suggests:
+    devtools,
+    pkgdown,
+    rmarkdown,
+    knitr,
+    roxygen2
+Remotes:
+  Ostluft/rOstluft
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+VignetteBuilder: knitr
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2

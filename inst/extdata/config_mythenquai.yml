@@ -1,0 +1,64 @@
+# Konfiguration Zeitraum:
+# to = lubridate::floor_date(lubridate::now(), floor_now) - lubridate::period(to_offset)
+# from = to - lubridate::period(period)
+# dates = seq(from, to, by = interval)
+tz: "GMT"
+floor_now: "day"
+to_offset: "1 day"
+period: "6 days"
+interval: "1 day"
+
+# Konfiguration Quelle und Ablage
+source_typ: "curl"
+input_fn_tpl: "https://tecdottir.herokuapp.com/measurements/mythenquai?startDate={format(date - 1, '%Y-%m-%d')}&endDate=%Y-%m-%d"
+cache_fn_tpl: "tmp/cache/seepolizei/mythenquai_%Y-%m-%d.json"
+imported_fn_tpl: "tmp/imported/seepolizei/%Y/mythenquai_%Y-%m-%d.rds"
+
+# verwendeter lokaler rOstluft Store
+store_name: "rOstluft.import"
+
+# Das Paket (Namespace), welches die Lesefunktion enthält muss aus R spezifischen
+# Gründen separat angeben werden. Verwende NULL we
+reading_function_ns: "rOstluft"
+reading_function: "read_seepolizei_json"
+
+# Allgemeines Verhalten
+missing_files: "warn"
+delete_cache: TRUE
+
+# Curl Optionen. Mehr Infos unter folgenden Links:
+# - https://jeroen.cran.dev/curl/reference/curl_options.html
+# - https://curl.se/libcurl/c/curl_easy_setopt.html
+# Beispiel für nltm Proxy
+#curl_opts:
+#  proxy: "proxy.server.loc:8080"
+#  proxyauth: 8
+#  proxyuserpwd: ":"
+#  ssl_verifypeer: 0
+
+# Zusätzliche HTTP Headers wenn curl verwendet wird. Beispielsweise ein JWT
+# Token zur Authorisation
+#curl_headers:
+#  Authorization: "Bearer XXXXXXXXXXXXXXXXXX"
+
+# Konfiguration der Normalisierung mit rOstluft::meta_apply
+# Für jeden Eintrag unter Meta wird meta_apply einmal aufgerufen
+meta_key: seepolizei
+meta:
+  -
+    data_src: site
+    data_dest: site
+    meta_key: site_short
+    meta_val: site
+  -
+    data_src: parameter
+    data_dest: unit
+    meta_key: parameter_original
+    meta_val: unit
+  -
+    data_src: parameter
+    data_dest: parameter
+    meta_key: parameter_original
+    meta_val: parameter
+
+

@@ -1,0 +1,10 @@
+.Rproj.user
+.Rhistory
+.RData
+inst/doc
+.renviron
+tmp
+\.DS_Store
+*.log
+*.Rproj
+main.R

@@ -1,0 +1,22 @@
+useurl: https://ostluft.github.io/rOstluft.import
+lang: de
+template:
+  bootstrap: 5
+
+
+reference:
+- title: Hauptfunktion
+  contents:
+  - import
+  - get_store
+
+- title: Hilfsfunktionen
+  desc: >
+    Exportierte interne Hilfsfunktionen
+  contents:
+  - create_date_sequence
+  - create_plan_df
+  - apply_tpl_to_date
+  - copy_files
+  - download_files
+  - import_files
